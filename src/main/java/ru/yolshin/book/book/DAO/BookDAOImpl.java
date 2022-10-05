@@ -3,6 +3,7 @@ package ru.yolshin.book.book.DAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 import ru.yolshin.book.book.entity.Book;
 
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ import java.util.Map;
 
 @Repository
 public class BookDAOImpl implements BookDAO {
+    private static final String CREATE_BOOK_SQL = "insert into BOOK (id, title, author, description) values (?, ?, ?, ?)";
+    private static final String FIND_ALL_BOOK_SQL = "select * from book";
+    private static final String FIND_ALL_BOOK_CONTAIN_SUB_SQL = "select * from book where title like ?";
     JdbcTemplate jdbcTemplate;
     RowMapper<Book> bookRowMapper;
 
@@ -21,36 +25,8 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
-    public List<Book> findAll() {
-        List<Book> bookList = jdbcTemplate.query("select * from book", bookRowMapper);
-        return bookList;
-    }
-
-    @Override
-    public Map<String, List<Book>> findAllByAuthors() {
-        Map<String, List<Book>> bookMap = new HashMap<>();
-        findAll().forEach(book -> {
-            if (bookMap.containsKey(book.getAuthor())) {
-                bookMap.get(book.getAuthor()).add(book);
-            } else {
-                List<Book> bookList = new ArrayList<>();
-                bookList.add(book);
-                bookMap.put(book.getAuthor(), bookList);
-            }
-        });
-
-        return bookMap;
-    }
-
-    public Map<String, Integer> findAuthor() {
-        Map<String, Integer> bookMap = new HashMap<>();
-
-        return bookMap;
-    }
-
-    @Override
     public Book create(Book book) {
-        Integer status = jdbcTemplate.update("insert into BOOK (id, title, author, description) values (?, ?, ?, ?)",
+        Integer status = jdbcTemplate.update(CREATE_BOOK_SQL,
                 book.getId(),
                 book.getTitle(),
                 book.getAuthor(),
@@ -59,4 +35,15 @@ public class BookDAOImpl implements BookDAO {
 
         return book;
     }
+
+    @Override
+    public List<Book> findAll() {
+        return jdbcTemplate.query(FIND_ALL_BOOK_SQL, bookRowMapper);
+    }
+
+    @Override
+    public List<Book> findAll(String sub) {
+        return jdbcTemplate.query(FIND_ALL_BOOK_CONTAIN_SUB_SQL, bookRowMapper, "%" + sub + "%");
+    }
+
 }

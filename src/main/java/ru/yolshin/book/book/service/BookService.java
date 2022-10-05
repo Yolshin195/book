@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface BookService {
     List<Book> findAll();
-
-    Map<String, List<Book>> findAllByAuthors();
+    Map<String, List<Book>> groupByAuthor();
+    Map<String, Integer> findAuthor(String sub);
     Book create(Book book);
 }

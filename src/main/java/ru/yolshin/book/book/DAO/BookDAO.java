@@ -8,6 +8,6 @@ import java.util.Map;
 
 public interface BookDAO {
     List<Book> findAll();
-    Map<String, List<Book>> findAllByAuthors();
+    List<Book> findAll(String sub);
     Book create(Book book);
 }
