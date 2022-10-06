@@ -5,10 +5,8 @@ import org.springframework.util.StringUtils;
 import ru.yolshin.book.book.DAO.BookDAO;
 import ru.yolshin.book.book.entity.Book;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -60,7 +58,10 @@ public class BookServiceImpl implements BookService {
                     }
                 });
 
-        return bookMap;
+        return bookMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue())
+                .limit(10)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
     private Integer count(String value, String sub) {

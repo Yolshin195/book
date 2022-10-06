@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface BookDAO {
+    Book findById(Long id);
     List<Book> findAll();
     List<Book> findAll(String sub);
     Book create(Book book);

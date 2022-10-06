@@ -14,7 +14,8 @@ import java.util.Map;
 @Repository
 public class BookDAOImpl implements BookDAO {
     private static final String CREATE_BOOK_SQL = "insert into BOOK (id, title, author, description) values (?, ?, ?, ?)";
-    private static final String FIND_ALL_BOOK_SQL = "select * from book";
+    private static final String FIND_BY_ID_SQL = "select * from book where id = ?";
+    private static final String FIND_ALL_BOOK_SQL = "select * from book order by title DESC";
     private static final String FIND_ALL_BOOK_CONTAIN_SUB_SQL = "select * from book where title like ?";
     JdbcTemplate jdbcTemplate;
     RowMapper<Book> bookRowMapper;
@@ -34,6 +35,14 @@ public class BookDAOImpl implements BookDAO {
         );
 
         return book;
+    }
+
+    @Override
+    public Book findById(Long id) {
+        List<Book> bookList = jdbcTemplate.query(FIND_BY_ID_SQL, bookRowMapper, id);
+        if (bookList.size() > 0) return bookList.get(0);
+
+        return null;
     }
 
     @Override
