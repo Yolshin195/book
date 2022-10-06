@@ -75,7 +75,7 @@ public class BookControllerTests {
                 .contentType(MediaType.APPLICATION_JSON);
 
         this.mockMvc.perform(request).andDo(print())
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(content().string(containsString("11")));
     }
 

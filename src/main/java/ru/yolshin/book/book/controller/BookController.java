@@ -1,7 +1,9 @@
 package ru.yolshin.book.book.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.yolshin.book.book.entity.Book;
@@ -10,6 +12,7 @@ import ru.yolshin.book.book.service.BookService;
 import java.util.List;
 import java.util.Map;
 
+@Tag(name = "Book REST API operations")
 @RestController
 @RequestMapping("/api/v1/book")
 public class BookController {
@@ -19,13 +22,8 @@ public class BookController {
 
     @GetMapping
     @Operation(summary = "return all books")
-    ResponseEntity<List<Book>> getAll() {
-        try{
-            return ResponseEntity.ok()
-                    .body(bookService.findAll());
-        } catch (Exception e) {
-            return ResponseEntity.internalServerError().body(null);
-        }
+    List<Book> getAll() {
+        return bookService.findAll();
     }
 
     @GetMapping("/groupBy/author")
@@ -43,7 +41,9 @@ public class BookController {
 
     @PostMapping
     @Operation(summary = "create new Book")
-    Book create(@RequestBody Book request) {
-        return bookService.create(request);
+    ResponseEntity<Book> create(@RequestBody Book request) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(bookService.create(request));
     }
 }

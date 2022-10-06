@@ -3,13 +3,9 @@ package ru.yolshin.book.book.DAO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 import ru.yolshin.book.book.entity.Book;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class BookDAOImpl implements BookDAO {
@@ -18,6 +14,7 @@ public class BookDAOImpl implements BookDAO {
     private static final String FIND_ALL_BOOK_SQL = "select * from book order by title DESC";
     private static final String FIND_ALL_BOOK_CONTAIN_SUB_SQL = "select * from book where title like ?";
     private static final String DELETE_BOOK_SQL = "delete from book where id = ?";
+    private static final String NEXT_ID_SQL = "select max(id)+1 from book";
 
     JdbcTemplate jdbcTemplate;
     RowMapper<Book> bookRowMapper;
@@ -39,6 +36,10 @@ public class BookDAOImpl implements BookDAO {
         return book;
     }
 
+    public Long nextId() {
+        return jdbcTemplate.queryForObject(NEXT_ID_SQL, Long.class);
+    }
+
     @Override
     public Book findById(Long id) {
         return jdbcTemplate.queryForObject(FIND_BY_ID_SQL, bookRowMapper, id);
@@ -52,16 +53,6 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public List<Book> findAll(String sub) {
         return jdbcTemplate.query(FIND_ALL_BOOK_CONTAIN_SUB_SQL, bookRowMapper, "%" + sub + "%");
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        Book book = findById(id);
-        if (book == null) {
-            return;
-        }
-
-        Integer status = jdbcTemplate.update(DELETE_BOOK_SQL, id);
     }
 
 }
