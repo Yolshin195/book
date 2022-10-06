@@ -17,6 +17,8 @@ public class BookDAOImpl implements BookDAO {
     private static final String FIND_BY_ID_SQL = "select * from book where id = ?";
     private static final String FIND_ALL_BOOK_SQL = "select * from book order by title DESC";
     private static final String FIND_ALL_BOOK_CONTAIN_SUB_SQL = "select * from book where title like ?";
+    private static final String DELETE_BOOK_SQL = "delete from book where id = ?";
+
     JdbcTemplate jdbcTemplate;
     RowMapper<Book> bookRowMapper;
 
@@ -39,10 +41,7 @@ public class BookDAOImpl implements BookDAO {
 
     @Override
     public Book findById(Long id) {
-        List<Book> bookList = jdbcTemplate.query(FIND_BY_ID_SQL, bookRowMapper, id);
-        if (bookList.size() > 0) return bookList.get(0);
-
-        return null;
+        return jdbcTemplate.queryForObject(FIND_BY_ID_SQL, bookRowMapper, id);
     }
 
     @Override
@@ -53,6 +52,16 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public List<Book> findAll(String sub) {
         return jdbcTemplate.query(FIND_ALL_BOOK_CONTAIN_SUB_SQL, bookRowMapper, "%" + sub + "%");
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        Book book = findById(id);
+        if (book == null) {
+            return;
+        }
+
+        Integer status = jdbcTemplate.update(DELETE_BOOK_SQL, id);
     }
 
 }

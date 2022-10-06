@@ -11,4 +11,6 @@ public interface BookDAO {
     List<Book> findAll();
     List<Book> findAll(String sub);
     Book create(Book book);
+
+    void deleteById(Long id);
 }

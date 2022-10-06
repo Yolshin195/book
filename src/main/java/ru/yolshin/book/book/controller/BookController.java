@@ -2,11 +2,11 @@ package ru.yolshin.book.book.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.yolshin.book.book.entity.Book;
 import ru.yolshin.book.book.service.BookService;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +19,13 @@ public class BookController {
 
     @GetMapping
     @Operation(summary = "return all books")
-    List<Book> getAll() {
-        return bookService.findAll();
+    ResponseEntity<List<Book>> getAll() {
+        try{
+            return ResponseEntity.ok()
+                    .body(bookService.findAll());
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body(null);
+        }
     }
 
     @GetMapping("/groupBy/author")
