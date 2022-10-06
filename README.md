@@ -1,6 +1,6 @@
 # Test task Book
 
-## Swagger
+## Swagger doc
 ```
     http://localhost:8080/swagger
 ```
