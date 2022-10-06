@@ -20,6 +20,7 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(DuplicateKeyException.class)
     public ErrorResponse conflict(DuplicateKeyException exception) {
+        logger.error("", exception);
         return new ErrorResponse(exception.getMessage());
     }
 
