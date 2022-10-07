@@ -1,4 +1,4 @@
-package ru.yolshin.book.book.model;
+package ru.yolshin.book.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

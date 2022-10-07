@@ -1,4 +1,4 @@
-package ru.yolshin.book.book;
+package ru.yolshin.book;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

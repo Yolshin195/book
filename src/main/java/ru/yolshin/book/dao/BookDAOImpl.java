@@ -1,9 +1,9 @@
-package ru.yolshin.book.book.DAO;
+package ru.yolshin.book.dao;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import ru.yolshin.book.book.entity.Book;
+import ru.yolshin.book.entity.Book;
 
 import java.util.List;
 

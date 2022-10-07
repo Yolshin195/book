@@ -1,6 +1,6 @@
-package ru.yolshin.book.book.service;
+package ru.yolshin.book.service;
 
-import ru.yolshin.book.book.entity.Book;
+import ru.yolshin.book.entity.Book;
 
 import java.util.List;
 import java.util.Map;

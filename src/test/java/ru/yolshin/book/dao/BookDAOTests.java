@@ -1,11 +1,10 @@
-package ru.yolshin.book.book.dao;
+package ru.yolshin.book.dao;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-import ru.yolshin.book.book.DAO.BookDAO;
-import ru.yolshin.book.book.entity.Book;
+import ru.yolshin.book.entity.Book;
 
 import java.util.List;
 

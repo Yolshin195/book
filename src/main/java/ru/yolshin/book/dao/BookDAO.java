@@ -1,10 +1,8 @@
-package ru.yolshin.book.book.DAO;
+package ru.yolshin.book.dao;
 
-import ru.yolshin.book.book.entity.Book;
-import ru.yolshin.book.book.service.BookService;
+import ru.yolshin.book.entity.Book;
 
 import java.util.List;
-import java.util.Map;
 
 public interface BookDAO {
     Book findById(Long id);

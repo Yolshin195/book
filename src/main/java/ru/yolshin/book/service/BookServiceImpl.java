@@ -1,9 +1,9 @@
-package ru.yolshin.book.book.service;
+package ru.yolshin.book.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import ru.yolshin.book.book.DAO.BookDAO;
-import ru.yolshin.book.book.entity.Book;
+import ru.yolshin.book.dao.BookDAO;
+import ru.yolshin.book.entity.Book;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -46,7 +46,7 @@ public class BookServiceImpl implements BookService {
     public Map<String, Integer> findAuthor(String sub) {
         Map<String, Integer> bookMap = new HashMap<>();
 
-        bookDAO.findAll(sub).stream()
+        bookDAO.findAll(sub)
                 .forEach(book -> {
                     Integer count = count(book.getTitle().toLowerCase(), sub.toLowerCase());
                     if (bookMap.containsKey(book.getAuthor())) {
