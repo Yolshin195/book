@@ -4,6 +4,7 @@ import ru.yolshin.book.entity.Book;
 
 import java.util.List;
 
+
 public interface BookDAO {
     Book findById(Long id);
     List<Book> findAll();

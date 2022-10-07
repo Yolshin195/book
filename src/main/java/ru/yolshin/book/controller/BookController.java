@@ -12,6 +12,7 @@ import ru.yolshin.book.service.BookService;
 import java.util.List;
 import java.util.Map;
 
+
 @Tag(name = "Book REST API operations")
 @RestController
 @RequestMapping("/api/v1/book")

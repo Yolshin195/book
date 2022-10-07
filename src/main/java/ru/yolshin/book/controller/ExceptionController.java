@@ -12,6 +12,7 @@ import ru.yolshin.book.model.ErrorResponse;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
+
 @Hidden
 @RestControllerAdvice(annotations = RestController.class)
 public class ExceptionController {

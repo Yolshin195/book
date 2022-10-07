@@ -7,6 +7,7 @@ import ru.yolshin.book.entity.Book;
 
 import java.util.List;
 
+
 @Repository
 public class BookDAOImpl implements BookDAO {
     private static final String CREATE_BOOK_SQL = "insert into BOOK (id, title, author, description) values (?, ?, ?, ?)";

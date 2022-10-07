@@ -5,6 +5,7 @@ import ru.yolshin.book.entity.Book;
 import java.util.List;
 import java.util.Map;
 
+
 public interface BookService {
     List<Book> findAll();
     Map<String, List<Book>> groupByAuthor();

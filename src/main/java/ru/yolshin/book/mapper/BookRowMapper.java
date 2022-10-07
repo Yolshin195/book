@@ -7,6 +7,7 @@ import ru.yolshin.book.entity.Book;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 @Component
 public class BookRowMapper implements RowMapper<Book> {
     @Override

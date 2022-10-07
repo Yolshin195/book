@@ -8,6 +8,7 @@ import ru.yolshin.book.entity.Book;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 @Service
 public class BookServiceImpl implements BookService {
     BookDAO bookDAO;
@@ -67,6 +68,5 @@ public class BookServiceImpl implements BookService {
     private Integer count(String value, String sub) {
         return StringUtils.countOccurrencesOf(value, sub);
     }
-
 
 }

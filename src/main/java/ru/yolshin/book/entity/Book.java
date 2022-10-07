@@ -2,6 +2,7 @@ package ru.yolshin.book.entity;
 
 import lombok.*;
 
+
 @Builder
 @Getter
 @Setter
