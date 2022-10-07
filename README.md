@@ -8,7 +8,7 @@
     password: password
 ```
 
-## Run server Book
+## Run server
 ```#!bash
     $ ./mvnw spring-boot:run
 ```

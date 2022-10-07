@@ -1,4 +1,4 @@
-package ru.yolshin.book.book.controller;
+package ru.yolshin.book.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.yolshin.book.book.entity.Book;
-import ru.yolshin.book.book.service.BookService;
+import ru.yolshin.book.entity.Book;
+import ru.yolshin.book.service.BookService;
 
 import java.util.List;
 import java.util.Map;
+
 
 @Tag(name = "Book REST API operations")
 @RestController

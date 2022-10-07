@@ -8,7 +8,7 @@
 		<version>2.7.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ru.yolshin.book</groupId>
+	<groupId>ru.yolshin</groupId>
 	<artifactId>book</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>book</name>

@@ -1,4 +1,4 @@
-package ru.yolshin.book.book;
+package ru.yolshin.book;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

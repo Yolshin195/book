@@ -1,4 +1,4 @@
-package ru.yolshin.book.book.controller;
+package ru.yolshin.book.controller;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import org.slf4j.Logger;
@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import ru.yolshin.book.book.model.ErrorResponse;
+import ru.yolshin.book.model.ErrorResponse;
 
 import static org.slf4j.LoggerFactory.getLogger;
+
 
 @Hidden
 @RestControllerAdvice(annotations = RestController.class)

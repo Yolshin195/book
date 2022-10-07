@@ -1,11 +1,12 @@
-package ru.yolshin.book.book.mapper;
+package ru.yolshin.book.mapper;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
-import ru.yolshin.book.book.entity.Book;
+import ru.yolshin.book.entity.Book;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 @Component
 public class BookRowMapper implements RowMapper<Book> {

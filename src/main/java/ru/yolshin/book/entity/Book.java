@@ -1,6 +1,7 @@
-package ru.yolshin.book.book.entity;
+package ru.yolshin.book.entity;
 
 import lombok.*;
+
 
 @Builder
 @Getter

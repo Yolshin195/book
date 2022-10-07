@@ -1,16 +1,15 @@
-package ru.yolshin.book.book.service;
+package ru.yolshin.book.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-import ru.yolshin.book.book.DAO.BookDAO;
-import ru.yolshin.book.book.entity.Book;
-
 import org.junit.jupiter.api.Assertions;
+import ru.yolshin.book.entity.Book;
 
 import java.util.List;
 import java.util.Map;
+
 
 @SpringBootTest
 public class BookServiceTests {
